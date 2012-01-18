@@ -36,7 +36,7 @@
     
     ```
     alias vi=~/bin/vim
-    alias vim~/bin/vim
+    alias vim=~/bin/vim
     ```
 
 5. Install [Vundle] for Vim.
