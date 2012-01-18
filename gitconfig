@@ -1,20 +1,20 @@
 [user]
-	email = moleniec@gmail.com
-	name = Michał Oleniec
+    email = moleniec@gmail.com
+    name = Michał Oleniec
 [alias]
-	status = st
-	st = status
-	co = checkout
-	ci = commit
+    status = st
+    st = status
+    co = checkout
+    ci = commit
     br = branch
     dc = diff --cached
     ds = diff --stat
     dcs = diff --cached --stat
     tree = log --oneline --decorate --graph
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
+    branch = auto
+    diff = auto
+    interactive = auto
     status = auto
 [core]
     editor = vim
