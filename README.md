@@ -53,6 +53,7 @@
 ## TODO
 
 * Installation script (?)
+* Vim plugins list
 
 [Vundle]:https://github.com/gmarik/vundle
 [vim compile flags]:http://drchip.0sites.net/astronaut/vim/vimfeat.html
