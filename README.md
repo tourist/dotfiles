@@ -28,9 +28,28 @@
     ```bash
     hg clone https://vim.googlecode.com/hg/ ~/vim/
     cd ~/vim/
-    ./configure --with-features=big --enable-cscope --enable-rubyinterp --enable-pythoninterp --prefix=$HOME
+    ./configure --with-features=big --enable-cscope --enable-rubyinterp --enable-pythoninterp --prefix=$HOME --with-python-config-dir=/usr/local/lib/python2.7/config
     make install
     ```
+    
+    If you got problems with plugins written in python you might have wrong version of Python compiled into Vim (I had some problems with rope because Vim compiled with Python2.4 and Rope gave SyntaxErrors).
+    
+    Check Python version in Vim:
+    ```
+    vim --version | tr '-' '\n' | grep python
+    ```
+    
+    Compile with proper version on your system (this may vary heavy depending on OS)
+    
+    Some tips about this:
+    http://www.tumblr.com/tagged/python-support
+    http://tartley.com/?p=1355
+    
+    For Webfaction multiple Python version I wanted to use newest 2.x version which was 2.7. I've used:
+    ```
+    ./configure --with-features=big --enable-cscope --enable-rubyinterp --enable-pythoninterp --prefix=$HOME vi_cv_path_python=/usr/local/bin/python2.7
+    ```
+    Same as before but with vi_cv_path_python defined
     
     after installation in your home dir you can add alias to new Vim inside ~/.bash_profile
     
