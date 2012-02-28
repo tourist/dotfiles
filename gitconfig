@@ -20,3 +20,4 @@
     editor = vim
 [merge]
     tool = vimdiff
+    ff = false
