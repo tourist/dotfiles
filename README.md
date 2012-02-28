@@ -69,6 +69,13 @@
     rake make
     ```
 
+8. For pyflakes and pep8 support:
+
+    ```
+    pip install pep8
+    pip install pyflakes
+    ```
+
 ## TODO
 
 * Installation script (?)
