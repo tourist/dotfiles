@@ -1,11 +1,15 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
+" =========================================================
+" Vim plugins vundle definitions and settings
+" =========================================================
+
+" Enable vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
+" Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
 " Snippets
@@ -13,9 +17,9 @@ Bundle 'gmarik/vundle'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "snipmate-snippets"
-" vim-snipmate itself
+" Vim-snipmate itself
 Bundle "garbas/vim-snipmate"
-" snippets pack
+" Snippets pack
 Bundle 'honza/snipmate-snippets'
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {} 
@@ -26,30 +30,40 @@ let g:snipMate.scope_aliases['html'] = 'html,htmldjango,css,javascript'
 Bundle 'tpope/vim-fugitive'
 
 " Python specific
+Bundle 'gg/python.vim'
 Bundle 'vim-scripts/python.vim--Vasiliev'
 Bundle 'nvie/vim-pep8'
 autocmd FileType python map <buffer> <F8> :call Pep8()<CR>
-Bundle 'nvie/vim-pyflakes'
-"Bundle 'vimscripts/pylint.vim'
-"autocmd FileType python compiler pylint
-"let g:pylint_onwrite = 0
-"autocmd FileType python map <buffer> <F6> :Pylint<CR>
 
-" Buffers handling
-"Bundle 'fholgado/minibufexpl.vim'
+Bundle 'nvie/vim-pyflakes'
+Bundle 'klen/rope-vim'
+" Jump to the definition of whatever the cursor is on                                                                                 
+map <leader>j :RopeGotoDefinition<CR>
+" Rename whatever the cursor is on (including references to it)
+map <leader>r :RopeRename<CR>
+
+Bundle 'alfredodeza/pytest.vim'
+" Execute the tests
+nmap <silent><Leader>tf <Esc>:Pytest file<CR>
+nmap <silent><Leader>tc <Esc>:Pytest class<CR>
+nmap <silent><Leader>tm <Esc>:Pytest method<CR>
+" cycle through test errors
+nmap <silent><Leader>tn <Esc>:Pytest next<CR>
+nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
+nmap <silent><Leader>te <Esc>:Pytest error<CR>
 
 " File exploration
 Bundle 'wincent/Command-T'
 
 " Other
+Bundle 'mattn/zencoding-vim'
+"let g:user_zen_leader_key = '<C-k>'
+
+Bundle 'scrooloose/nerdtree'
+map <F2> :NERDTreeToggle \| :silent NERDTreeMirror<CR>
+
 Bundle 'tpope/vim-surround'
-" Django templates tags surround support
-let g:surround_{char2nr("b")} = "{% block\1 \r..*\r &\1%}\r{% endblock %}"
-let g:surround_{char2nr("i")} = "{% if\1 \r..*\r &\1%}\r{% endif %}"
-let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &\1%}\r{% endwith %}"
-let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1%}\r{% endcomment %}"
-let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
-let g:surround_{char2nr("v")} = "{{ \1 \r..*\r &\1\r }}"
+Bundle 'tpope/vim-vividchalk'
 
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
@@ -64,16 +78,14 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 Bundle 'vim-scripts/YankRing.vim'
 nnoremap <silent> <F11> :YRShow<CR>
 
-
 filetype plugin indent on     " required! 
 
-" configure expanding of tabs for various file types
-au BufRead,BufNewFile *.py set expandtab
-au BufRead,BufNewFile *.c set noexpandtab
-au BufRead,BufNewFile *.h set noexpandtab
-au BufRead,BufNewFile Makefile* set noexpandtab
 
-"remove all trailing whitespace for specified files before write
+" =========================================================
+" Filetype custom settings
+" =========================================================
+
+" remove all trailing whitespace for specified files before write
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
@@ -91,29 +103,103 @@ autocmd BufWritePre *.js :call <SID>StripTrailingWhitespaces()
 autocmd BufWritePre *.css :call <SID>StripTrailingWhitespaces()
 autocmd BufWritePre *.xml :call <SID>StripTrailingWhitespaces()
 
-" --------------------------------------------------------------------------------
-" configure editor with tabs and nice stuff...
-" --------------------------------------------------------------------------------
-set expandtab           " enter spaces when tab is pressed
-set textwidth=80        " break lines when line length increases
-set tabstop=4           " use 4 spaces to represent tab
-set softtabstop=4
-set shiftwidth=4        " number of spaces to use for auto indent
-set autoindent          " copy indent from current line when starting a new line
+" configure expanding of tabs for various file types
+au BufRead,BufNewFile *.py set expandtab
+au BufRead,BufNewFile *.c set noexpandtab
+au BufRead,BufNewFile *.h set noexpandtab
+au BufRead,BufNewFile Makefile* set noexpandtab
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
-set pastetoggle=<F2>    " enable paste mode switching for F2 key
+" Add classic django templates tag's mappings to Surround
+" http://code.djangoproject.com/wiki/UsingVimWithDjango#SurroundMappings
+let g:surround_{char2nr("b")} = "{% block\1 \r..*\r &\1%}\r{% endblock %}"
+let g:surround_{char2nr("i")} = "{% if\1 \r..*\r &\1%}\r{% endif %}"
+let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &\1%}\r{% endwith %}"
+let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1%}\r{% endcomment %}"
+let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
+let g:surround_{char2nr("v")} = "{{ \1 \r..*\r &\1\r }}"
 
-" make backspaces more powerfull
-set backspace=indent,eol,start
 
-set ruler                       " show line and column number
+" =========================================================
+" Basic settings
+" =========================================================
+
 syntax on                       " syntax highlighting
-filetype plugin on
+filetype on                     " try to detect filetypes
+filetype plugin on              " enable loading indent file for filetype
+set ruler                       " show line and column number
+set cursorline                  " highlight current line with underline
 set showcmd                     " show (partial) command in status line
 set number                      " show line numbers
-set cursorline                  " highlight current line with underline
+set title                       " show title in console title bar
+
+
+" =========================================================
+" Movin around/editing
+" =========================================================
+
+set backspace=2                 " allow backspacing over autoindent, EOL, and BOL
+set nowrap                      " don't wrap text
+set linebreak                   " don't wrap textin the middle of work
+set expandtab                   " enter spaces when tab is pressed
+set tabstop=4                   " use 4 spaces to represent tab
+set softtabstop=4               " backspace over autoindent deletes spaces
+set shiftwidth=4                " number of spaces to use for auto indent
+set autoindent                  " copy indent from current line when starting a new line
+
+set ignorecase                  " default to using case insensitive searches
+set smartcase                   " unless uppercase letters are used in the regex
+set hlsearch                    " highlight searches by default
+set incsearch                   " incrementally search while typing a /regex
+
+set foldmethod=indent           " allow us to fold on indents
+set foldlevel=99                " don't fold by default
+
+" Disable arrow keys in normal and insert mode
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+
+set pastetoggle=<F3>            " enable paste mode switching for F3 key
+
+" Show a line at column 79
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 " Restore cursor position
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
+
+
+" =========================================================
+" Display - themes, messages, info
+" =========================================================
+
+colorscheme vividchalk
+set background=dark             " using dark background in vim
+set ls=2                        " always show status line
+set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
+
+
+
+" Add the virtualenv's site-packages to vim path
+"py << EOF
+"import os.path
+"import sys
+"import vim
+"print sys.version
+"if 'VIRTUAL_ENV' in os.environ:
+"    project_base_dir = os.environ['VIRTUAL_ENV']
+"    sys.path.insert(0, project_base_dir)
+"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"    execfile(activate_this, dict(__file__=activate_this))
+"EOF
