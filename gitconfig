@@ -2,7 +2,6 @@
     email = moleniec@gmail.com
     name = Michał Oleniec
 [alias]
-    status = st
     st = status
     co = checkout
     ci = commit
