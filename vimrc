@@ -1,6 +1,6 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
-se t_Co=256
+" se t_Co=256
 " =========================================================
 " Vim plugins vundle definitions and settings
 " =========================================================
@@ -41,16 +41,6 @@ Bundle 'klen/rope-vim'
 map <leader>j :RopeGotoDefinition<CR>
 " Rename whatever the cursor is on (including references to it)
 map <leader>r :RopeRename<CR>
-
-Bundle 'alfredodeza/pytest.vim'
-" Execute the tests
-nmap <silent><Leader>tf <Esc>:Pytest file<CR>
-nmap <silent><Leader>tc <Esc>:Pytest class<CR>
-nmap <silent><Leader>tm <Esc>:Pytest method<CR>
-" cycle through test errors
-nmap <silent><Leader>tn <Esc>:Pytest next<CR>
-nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
-nmap <silent><Leader>te <Esc>:Pytest error<CR>
 
 " File exploration
 Bundle 'wincent/Command-T'
