@@ -22,6 +22,7 @@
    * version and ruby support with *vim --version* or *:version* inside Vim
 
 4. If necessary compile and install Vim 7.3+ version with ruby support:
+   * for ubuntu installing ```vim-nox``` should be sufficient
    * handy list of available [vim compile flags]
    * e.g. for Webfaction account I've used (worked also on my Mac OS X 10.6.8):
 
@@ -41,8 +42,8 @@
     
     Compile with proper version on your system (this may vary heavy depending on OS)
     
-    Some tips about this:
-    http://www.tumblr.com/tagged/python-support
+    Some tips about this:  
+    http://www.tumblr.com/tagged/python-support  
     http://tartley.com/?p=1355
     
     For Webfaction multiple Python version I wanted to use newest 2.x version which was 2.7. I've used:
@@ -56,6 +57,12 @@
     ```
     alias vi=~/bin/vim
     alias vim=~/bin/vim
+    ```
+    
+    or change PATH setting to look for vim in home dir first e.g.
+    
+    ```
+    export PATH=$HOME/bin:$PATH
     ```
 
 5. Install [Vundle] for Vim.
