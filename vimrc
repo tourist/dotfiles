@@ -146,14 +146,14 @@ set foldmethod=indent           " allow us to fold on indents
 set foldlevel=99                " don't fold by default
 
 " Disable arrow keys in normal and insert mode
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
+" inoremap  <Up>     <NOP>
+" inoremap  <Down>   <NOP>
+" inoremap  <Left>   <NOP>
+" inoremap  <Right>  <NOP>
+" noremap   <Up>     <NOP>
+" noremap   <Down>   <NOP>
+" noremap   <Left>   <NOP>
+" noremap   <Right>  <NOP>
 
 set pastetoggle=<F3>            " enable paste mode switching for F3 key
 
