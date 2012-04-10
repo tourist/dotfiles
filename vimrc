@@ -32,10 +32,10 @@ Bundle 'tpope/vim-fugitive'
 " Python specific
 Bundle 'gg/python.vim'
 Bundle 'vim-scripts/python.vim--Vasiliev'
-Bundle 'nvie/vim-pep8'
-autocmd FileType python map <buffer> <F8> :call Pep8()<CR>
+Bundle 'nvie/vim-flake8'
+" Run flake8 on save
+autocmd BufWritePost *.py call Flake8()
 
-Bundle 'nvie/vim-pyflakes'
 Bundle 'klen/rope-vim'
 " Jump to the definition of whatever the cursor is on                                                                                 
 map <leader>j :RopeGotoDefinition<CR>
