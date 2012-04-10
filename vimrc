@@ -1,6 +1,6 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
-
+se t_Co=256
 " =========================================================
 " Vim plugins vundle definitions and settings
 " =========================================================
