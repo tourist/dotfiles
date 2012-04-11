@@ -76,11 +76,10 @@
     rake make
     ```
 
-8. For pyflakes and pep8 support:
+8. For flake8 support:
 
     ```
-    pip install pep8
-    pip install pyflakes
+    pip install flake8
     ```
 
 ## TODO
