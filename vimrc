@@ -123,7 +123,8 @@ set cursorline                  " highlight current line with underline
 set showcmd                     " show (partial) command in status line
 set number                      " show line numbers
 set title                       " show title in console title bar
-
+set backupdir=~/tmp/vim//       " directory for swap files
+set directory=~/tmp/vim//       " directory for backup files
 
 " =========================================================
 " Movin around/editing
