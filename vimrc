@@ -99,6 +99,7 @@ au BufRead,BufNewFile *.c set noexpandtab
 au BufRead,BufNewFile *.h set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 
 " Add classic django templates tag's mappings to Surround
 " http://code.djangoproject.com/wiki/UsingVimWithDjango#SurroundMappings
