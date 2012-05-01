@@ -52,6 +52,9 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle \| :silent NERDTreeMirror<CR>
 
+" fix inline xml files
+map <F4> :%s/></>\r</g <CR>
+
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vividchalk'
 
