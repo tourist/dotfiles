@@ -11,6 +11,9 @@
     ds = diff --stat
     dcs = diff --cached --stat
     tree = log --oneline --decorate --graph
+    shows = show --stat
+    showns = show --name-status
+    logs = log --pretty=oneline --abbrev-commit
 [color]
     branch = auto
     diff = auto
